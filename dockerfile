@@ -10,8 +10,8 @@ COPY . .
 # Bundle app source
 RUN npm install
 
-# Expose port 3000
-EXPOSE 3000
+# Expose port 8080
+EXPOSE 8080
 
 # Run app
 CMD ["node", "index.js"]
