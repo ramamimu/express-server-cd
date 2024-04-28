@@ -1,11 +1,11 @@
 steps:
   # build image
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/express-server:$COMMIT_SHA", "."]
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/express-trial:$COMMIT_SHA", "."]
 
   # push image
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/express-server:$COMMIT_SHA"]
+    args: ["push", "gcr.io/$PROJECT_ID/express-trial:$COMMIT_SHA"]
 
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: gcloud
@@ -13,13 +13,13 @@ steps:
       [
         "run",
         "deploy",
-        "express-server",
+        "express-trial",
         "--image",
-        "gcr.io/$PROJECT_ID/express-server:$COMMIT_SHA",
+        "gcr.io/$PROJECT_ID/express-trial:$COMMIT_SHA",
         "--region",
         "asia-southeast2",
         "--allow-unauthenticated",
       ]
 
 images:
-  - gcr.io/$PROJECT_ID/express-server
+  - gcr.io/$PROJECT_ID/express-trial
