@@ -6,6 +6,10 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
 
+app.get("/", (request, response) => {
+  response.send("hello world");
+});
+
 app.get("/ping", (request, response) => {
   response.send("pong");
 });
